@@ -9,47 +9,7 @@
 	</div>
 	<div class="start-page px-3 bg-white pt-2">
 		<h2>Wiki Pages</h2>
-		<div id="az_list" class="wiki-link-container">
-			<form id="alphabet_form" action="" method="POST">
-				{% csrf_token %}
-				<ul class="btn-group">
-					<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">
-						A-Z
-					</button>
-					<div class="dropdown-menu bg-light p-2">
-						{% for letter in alphabet_list  %}
-						<li class="link_{{letter}} mx-1">
-							<a class="link_anchor font-weight-bold text-primary" data-value={{letter}} href="#"
-								style="font-size: 22px;">
-								{{letter}}
-							</a>
-						</li>
-						{% endfor %}
-						<input id="abc_input" type="hidden" name="letter" value="">
-						<script>
-							let abc_form = document.getElementById('alphabet_form')
-							document.querySelectorAll('.link_anchor').forEach(function (btn) {
-
-								btn.addEventListener('click', function (e) {
-									e.preventDefault();
-									document.getElementById("abc_input").value = btn.dataset.value;
-
-									// Load spinner
-									let spinner = document.getElementById('spinner');
-									setTimeout(function () {
-										/*only show spinner if loading takes more than one sec
-											Other wise it get annoying to users */
-										spinner.classList.remove('invisible');
-									}, 1000)
-									abc_form.submit();
-								})
-							})
-						</script>
-					</div>
-				</ul>
-			</form>
-		</div>
+		
 
 		{# All avaialble Enties #}
 		<div id="spinner" class="invisible  position-fixed mh-100 mw-50 h-100 w-50 ">
